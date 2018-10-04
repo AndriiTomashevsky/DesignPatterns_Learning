@@ -2,42 +2,39 @@ using System;
 
 namespace DesignPatterns
 {
+    interface IFlyable { void Fly(); }
+    interface IQuackable { void Quack(); }
+
     public abstract class Duck
     {
+        public void Swim() { Console.WriteLine("All ducks float, even decoys!"); }
         public abstract void Display();
-        public void Swim() { }
-        public virtual void Fly() { }
-        public virtual void Quack() { }
     }
 
-    public class MallardDuck : Duck
+    public class MallardDuck : Duck, IFlyable, IQuackable
     {
         public override void Display() { }
+        public void Fly() { }
+        public void Quack() { }
     }
 
-    public class ReadheadDuck : Duck
+    public class ReadheadDuck : Duck, IFlyable, IQuackable
     {
         public override void Display() { }
+        public void Fly() { }
+        public void Quack() { }
     }
 
-    public class RubberDuck : Duck
+    public class RubberDuck : Duck, IQuackable
     {
         public override void Display() { }
-        public override void Quack() { }
-        public override void Fly() { }
+        public void Quack() { }
+
     }
 
     public class DecoyDuck : Duck
     {
         public override void Display() { }
-        public override void Quack()
-        {
-            // override to fo nothing 
-        }
-        public override void Fly()
-        {
-            // override to fo nothing
-        }
     }
 
     class Program
@@ -45,10 +42,9 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             MallardDuck mallardDuck = new MallardDuck();
-            mallardDuck.Quack();
-
             Duck rubberDuck = new RubberDuck();
             mallardDuck.Quack();
+            //rubberDuck.Quack();
 
             Console.ReadKey();
         }
