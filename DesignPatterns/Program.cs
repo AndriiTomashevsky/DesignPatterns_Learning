@@ -96,6 +96,21 @@ namespace DesignPatterns
         }
     }
 
+    class WhistleOfHunter
+    {
+        IQuackBehavior quackClass;
+
+        public WhistleOfHunter()
+        {
+            quackClass = new QuackClass();
+        }
+
+        public void PerformQuack()
+        {
+            quackClass.Quack();
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)
