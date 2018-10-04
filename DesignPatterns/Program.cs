@@ -8,6 +8,10 @@ using System.Collections.Generic;
 //                                  SECOND DESIGN PRINCIPLE
 
 //Program to an interface, not an implementation.
+
+//                                   THIRD DESIGN PRINCIPLE
+//Favor composition over inheritance.
+
 namespace DesignPatterns
 {
     public interface IFlyBehavior { void Fly(); }
@@ -15,6 +19,7 @@ namespace DesignPatterns
 
     class FlyWithWings : IFlyBehavior { public void Fly() { Console.WriteLine("I'm flying!"); } }
     class FlyNoWay : IFlyBehavior { public void Fly() { Console.WriteLine("I can't fly"); } }
+    class FlyRocketPowered : IFlyBehavior { public void Fly() { Console.WriteLine("I'm flying with a rocket"); } }
 
     class QuackClass : IQuackBehavior { public void Quack() { Console.WriteLine("Quack"); } }
     class Squeak : IQuackBehavior { public void Quack() { Console.WriteLine("Squeak"); } }
@@ -34,6 +39,9 @@ namespace DesignPatterns
         {
             quackBehavior.Quack();
         }
+
+        public void SetFlyBehavior(IFlyBehavior fb) { flyBehavior = fb; }
+        public void SetQuackBehavior(IQuackBehavior qb) { quackBehavior = qb; }
 
         public void Swim() { Console.WriteLine("All ducks float, even decoys!"); }
         public abstract void Display();
@@ -78,6 +86,16 @@ namespace DesignPatterns
         }
     }
 
+    class ModelDuck : Duck
+    {
+        public override void Display() { Console.WriteLine("ModelDuck"); }
+        public ModelDuck()
+        {
+            flyBehavior = new FlyNoWay();
+            quackBehavior = new QuackClass();
+        }
+    }
+
     public class Program
     {
         static void Main(string[] args)
@@ -85,6 +103,11 @@ namespace DesignPatterns
             Duck mallard = new MallardDuck();
             mallard.PerformFly();
             mallard.PerformQuack();
+
+            Duck model = new ModelDuck();
+            model.PerformFly();
+            model.SetFlyBehavior(new FlyRocketPowered());
+            model.PerformFly();
 
             Console.ReadKey();
         }
