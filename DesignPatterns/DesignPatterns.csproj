@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDisplayElement.cs" />
+    <Compile Include="IObserver.cs" />
     <Compile Include="Observers\CurrentConditionsDisplay.cs" />
     <Compile Include="Observers\ForecastDisplay.cs" />
     <Compile Include="Program.cs" />
