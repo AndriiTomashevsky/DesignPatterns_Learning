@@ -29,6 +29,16 @@ namespace DesignPatterns
         public Espresso() { description = "Espresso"; }
         public override float Cost() { throw new NotImplementedException(); }
     }
+    class HouseBlendWithSteamedMilkandMocha : Beverage
+    {
+        public HouseBlendWithSteamedMilkandMocha() { description = "HouseBlendWithSteamedMilkandMocha"; }
+        public override float Cost() { throw new NotImplementedException(); }
+    }
+    class DarkRoastWithSteamedMilkandCaramel : Beverage
+    {
+        public DarkRoastWithSteamedMilkandCaramel() { description = "DarkRoastWithSteamedMilkandCaramel"; }
+        public override float Cost() { throw new NotImplementedException(); }
+    }
 
     class Program
     {
