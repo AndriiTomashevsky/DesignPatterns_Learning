@@ -42,11 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CondimentDecorator.cs" />
+    <Compile Include="Condiments\Milk.cs" />
+    <Compile Include="Condiments\Mocha.cs" />
+    <Compile Include="Condiments\Soy.cs" />
+    <Compile Include="Condiments\Whip.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
