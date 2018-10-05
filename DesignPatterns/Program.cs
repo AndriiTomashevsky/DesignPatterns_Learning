@@ -6,38 +6,58 @@ namespace DesignPatterns
     {
         protected string description;
         public string GetDescription() { return description; }
-        public abstract float Cost();
+        public virtual double Cost()
+        {
+            if (HasMilk()) { condimentCost += 0.10; }
+            if (HasSoy()) { condimentCost += 0.15; }
+            if (HasMocha()) { condimentCost += 0.20; }
+            if (HasWhip()) { condimentCost += 0.10; }
+            return condimentCost;
+        }
+
+        bool milk, soy, mocha, whip;
+        double condimentCost;
+
+        bool HasMilk() { return milk; }
+        bool HasSoy() { return soy; }
+        bool HasMocha() { return mocha; }
+        bool HasWhip() { return whip; }
+
+        public void SetMilk() { milk = true; }
+        public void SetSoy() { soy = true; }
+        public void SetMocha() { mocha = true; }
+        public void SetWhip() { whip = true; }
     }
 
     class HouseBlend : Beverage
     {
         public HouseBlend() { description = "HouseBlend"; }
-        public override float Cost() { throw new NotImplementedException(); }
+        public override double Cost() { throw new NotImplementedException(); }
     }
     class DarkRoast : Beverage
     {
         public DarkRoast() { description = "DarkRoast"; }
-        public override float Cost() { throw new NotImplementedException(); }
+        public override double Cost() { throw new NotImplementedException(); }
     }
     class Decaf : Beverage
     {
         public Decaf() { description = "Decaf"; }
-        public override float Cost() { throw new NotImplementedException(); }
+        public override double Cost() { throw new NotImplementedException(); }
     }
     class Espresso : Beverage
     {
         public Espresso() { description = "Espresso"; }
-        public override float Cost() { throw new NotImplementedException(); }
+        public override double Cost() { throw new NotImplementedException(); }
     }
     class HouseBlendWithSteamedMilkandMocha : Beverage
     {
         public HouseBlendWithSteamedMilkandMocha() { description = "HouseBlendWithSteamedMilkandMocha"; }
-        public override float Cost() { throw new NotImplementedException(); }
+        public override double Cost() { throw new NotImplementedException(); }
     }
     class DarkRoastWithSteamedMilkandCaramel : Beverage
     {
         public DarkRoastWithSteamedMilkandCaramel() { description = "DarkRoastWithSteamedMilkandCaramel"; }
-        public override float Cost() { throw new NotImplementedException(); }
+        public override double Cost() { throw new NotImplementedException(); }
     }
 
     class Program
