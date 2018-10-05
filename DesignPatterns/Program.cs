@@ -1,81 +1,39 @@
-using DesignPatterns.Observers;
 using System;
-using System.Collections;
 
 namespace DesignPatterns
 {
-    public interface ISubject
+    abstract class Beverage
     {
-        void RegisterObserver(IObserver î);
-        void RemoveObserver(IObserver î);
-        void NotifyObservers();
+        protected string description;
+        public string GetDescription() { return description; }
+        public abstract float Cost();
     }
 
-    public class WeatherData : ISubject
+    class HouseBlend : Beverage
     {
-        private ArrayList observers;
-        private float temperature;
-        private float humidity;
-        private float pressure;
-
-        public void RegisterObserver(IObserver o)
-        {
-            observers.Add(o);
-        }
-
-        public void RemoveObserver(IObserver o)
-        {
-            int i = observers.IndexOf(o);
-            if (i >= 0)
-            {
-                observers.Remove(o);
-            }
-        }
-
-        public WeatherData()
-        {
-            observers = new ArrayList();
-        }
-
-        public void SetMesurements(float temperature, float humidity, float pressure)
-        {
-            this.temperature = temperature;
-            this.humidity = humidity;
-            this.pressure = pressure;
-
-            MeasurementsChanged();
-        }
-
-        public void MeasurementsChanged()
-        {
-            NotifyObservers();
-        }
-
-        public void NotifyObservers()
-        {
-            for (int i = 0; i < observers.Count; i++)
-            {
-                IObserver observer = (IObserver)observers[i];
-                observer.Update(temperature, humidity, pressure);
-            }
-        }
+        public HouseBlend() { description = "HouseBlend"; }
+        public override float Cost() { throw new NotImplementedException(); }
+    }
+    class DarkRoast : Beverage
+    {
+        public DarkRoast() { description = "DarkRoast"; }
+        public override float Cost() { throw new NotImplementedException(); }
+    }
+    class Decaf : Beverage
+    {
+        public Decaf() { description = "Decaf"; }
+        public override float Cost() { throw new NotImplementedException(); }
+    }
+    class Espresso : Beverage
+    {
+        public Espresso() { description = "Espresso"; }
+        public override float Cost() { throw new NotImplementedException(); }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            WeatherData weatherData = new WeatherData();
-
-            CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherData);
-            StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
-            ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
-            HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(weatherData);
-
-            weatherData.SetMesurements(80, 65, 30.4f);
-            weatherData.SetMesurements(82, 70, 29.2f);
-            weatherData.SetMesurements(78, 90, 29.2f);
-
             Console.ReadKey();
         }
     }

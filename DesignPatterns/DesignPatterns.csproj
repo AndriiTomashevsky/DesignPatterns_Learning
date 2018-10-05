@@ -42,14 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDisplayElement.cs" />
-    <Compile Include="IObserver.cs" />
-    <Compile Include="Observers\CurrentConditionsDisplay.cs" />
-    <Compile Include="Observers\ForecastDisplay.cs" />
-    <Compile Include="Observers\HeatIndexDisplay.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Observers\StatisticDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
