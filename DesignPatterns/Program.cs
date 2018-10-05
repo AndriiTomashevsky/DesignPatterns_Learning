@@ -1,3 +1,4 @@
+using DesignPatterns.Observers;
 using System;
 using System.Collections;
 
@@ -69,6 +70,7 @@ namespace DesignPatterns
             CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherData);
             StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
             ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
+            HeatIndexDisplay heatIndexDisplay = new HeatIndexDisplay(weatherData);
 
             weatherData.SetMesurements(80, 65, 30.4f);
             weatherData.SetMesurements(82, 70, 29.2f);

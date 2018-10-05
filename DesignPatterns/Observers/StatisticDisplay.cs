@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DesignPatterns
+namespace DesignPatterns.Observers
 {
     public class StatisticsDisplay : IObserver, IDisplayElement
     {
